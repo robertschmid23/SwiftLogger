@@ -1,18 +1,18 @@
 //
 //  Log.swift
-//  GhimMac
+//  SwiftLogger
 //
 //  Created by Robert Schmid on 10/2/2025.
 //
 import Foundation
 
-//@Ghost
+//@GlobalLogActor
 public class Log //: Sendable
 {
-	nonisolated(unsafe) private static let shared = GhostLogger()
-	nonisolated(unsafe) private static var loggers: [String: GhostLogger] = [:]
+	nonisolated(unsafe) private static let shared = SwiftLogger()
+	nonisolated(unsafe) private static var loggers: [String: SwiftLogger] = [:]
     
-    static func logger(subsystem: String? = nil, category: String? = nil) -> GhostLogger
+    static func logger(subsystem: String? = nil, category: String? = nil) -> SwiftLogger
     {
         if subsystem == nil && category == nil
         {
@@ -25,7 +25,7 @@ public class Log //: Sendable
         }
         else
         {
-            let newLogger = GhostLogger(subsystem: subsystem, category: category)
+            let newLogger = SwiftLogger(subsystem: subsystem, category: category)
             loggers[loggerId] = newLogger
             return newLogger
         }

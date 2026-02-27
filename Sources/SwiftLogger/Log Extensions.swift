@@ -1,6 +1,6 @@
 //
 //  LogExtensions.swift
-//  GhimMac
+//  SwiftLogger
 //
 //  Created by Robert Schmid  on 12/3/25.
 //

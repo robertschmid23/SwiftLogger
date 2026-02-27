@@ -1,12 +1,12 @@
 //
 //  Test.swift
-//  GhimMac
+//  SwiftLogger
 //
 //  Created by Robert Schmid on 10/2/2025.
 //
 
 import Testing
-import GhimMac
+import SwiftLogger
 
 struct Test
 {		

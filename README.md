@@ -1,12 +1,12 @@
-# GhimMac - **Gh**ost **i**n **m**y **Mac**
+# SwiftLogger - **Gh**ost **i**n **m**y **Mac**
 
-GhimMac is loosely based on the original Log4J and it's successor Logback.  Despite Log4J presenting an excellent logging framework before Java had it's own, the makers of Java felt, for some reason, that a lobotimized logging framework was what they wanted instead.  Naturally Android and Swift have followed suit with much less powerful logging frameworks which encourage developers to simply avoid logging as much as possible.
+SwiftLogger is loosely based on the original Log4J and it's successor Logback.  Despite Log4J presenting an excellent logging framework before Java had it's own, the makers of Java felt, for some reason, that a lobotimized logging framework was what they wanted instead.  Naturally Android and Swift have followed suit with much less powerful logging frameworks which encourage developers to simply avoid logging as much as possible.
 
-In contrast Log4J and GhimMac are configurable and can be set to log as much or as little as needed before or, perhaps, during logging.  It can also be wholly deactivated to maximize performance on release.  
+In contrast Log4J and SwiftLogger are configurable and can be set to log as much or as little as needed before or, perhaps, during logging.  It can also be wholly deactivated to maximize performance on release.  
 
-Beside configurability, Log4J allows the implementation of custom Loggers for special purposes like logging to a database or to different files.  GhimMac doesn't support those ideas yet but could in the future.
+Beside configurability, Log4J allows the implementation of custom Loggers for special purposes like logging to a database or to different files.  SwiftLogger doesn't support those ideas yet but could in the future.
 
-To configure GhimMac in an app, place a GhimMac.config file in the Resources or DeveloperAssets directories.  The format is JSON and looks like;
+To configure SwiftLogger in an app, place a SwiftLogger.config file in the Resources or DeveloperAssets directories.  The format is JSON and looks like;
 
 ```json
 {
@@ -37,7 +37,7 @@ Log.debug("This is a debug statement")
 The output is not simply the message but also shows the file and line where the log statement was made
 
 ```
-2022-10-07 14:38:16.732975-0500 xctest[13136:190224] [category] Debug Statement (GhimMacTests.swift:9)
+2022-10-07 14:38:16.732975-0500 xctest[13136:190224] [category] Debug Statement (SwiftLoggerTests.swift:9)
 ```
 
 

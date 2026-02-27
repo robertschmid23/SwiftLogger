@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension GhostLogger
+extension SwiftLogger
 {
 	@objc public func debugJSONObjc(json: Data?)
 	{

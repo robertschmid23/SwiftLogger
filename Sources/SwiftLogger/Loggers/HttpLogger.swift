@@ -6,7 +6,7 @@
 
 import Foundation
 
-extension GhostLogger
+extension SwiftLogger
 {
 	private static let block = "\u{2588}"
 	private static let bar = String(repeating: block, count: 24)
@@ -15,7 +15,7 @@ extension GhostLogger
 	{
 		if Threshold.SESSION.meets(threshold: threshold)
 		{
-			var reqLog = "\n\n    BEGIN HTTP REQUEST \(GhostLogger.bar)\n"
+			var reqLog = "\n\n    BEGIN HTTP REQUEST \(SwiftLogger.bar)\n"
 			reqLog.append("        \(request.httpMethod!): \(request.url!)\n")
 			for header in request.allHTTPHeaderFields!
 			{
@@ -25,7 +25,7 @@ extension GhostLogger
 			{
 				reqLog.append("            \(raw)\n")
 			}
-			reqLog.append("    END HTTP REQUEST \(GhostLogger.bar)\n\n")
+			reqLog.append("    END HTTP REQUEST \(SwiftLogger.bar)\n\n")
 			fLog(file: file, funcName: funcName, line: line, level: .SESSION, format: reqLog, args: args)
 		}
 	}
@@ -37,7 +37,7 @@ extension GhostLogger
 	{
 		if Threshold.SESSION.meets(threshold: threshold), let resp = response as? HTTPURLResponse
 		{
-			var respLog = "\n\n    BEGIN HTTP RESPONSE \(GhostLogger.bar)\n"
+			var respLog = "\n\n    BEGIN HTTP RESPONSE \(SwiftLogger.bar)\n"
 			if let req = request, let url = req.url
 			{
 				respLog.append("            Request Path: \(url)\n")
@@ -52,7 +52,7 @@ extension GhostLogger
 			{
 				respLog.append("            \(raw)\n")
 			}
-			respLog.append("    END HTTP RESPONSE \(GhostLogger.bar)\n\n")
+			respLog.append("    END HTTP RESPONSE \(SwiftLogger.bar)\n\n")
 			fLog(file: file, funcName: funcName, line: line, level: .SESSION, format: respLog, args: args)
 		}
 	}

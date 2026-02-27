@@ -6,7 +6,7 @@
 
 import Foundation
 
-extension GhostLogger
+extension SwiftLogger
 {
 	public func posted(_ notification: Notification, file: String = #file, funcName: String = #function, line: Int = #line, args:CVarArg = [] as [String])
 	{

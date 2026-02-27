@@ -5,7 +5,7 @@
 //
 import Foundation
 
-extension GhostLogger
+extension SwiftLogger
 {
 	private func addTimerMark(key: TimerKey)
 	{

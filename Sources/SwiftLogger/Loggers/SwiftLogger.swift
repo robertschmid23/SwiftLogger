@@ -1,6 +1,6 @@
 //
-//  GhostLogger.swift
-//  GhimMac
+//  SwiftLogger.swift
+//  SwiftLogger
 //
 //  Created by Robert Schmid on 10/2/2025.
 //
@@ -8,23 +8,23 @@
 import Foundation
 import OSLog
 
-let ghimMacIdentifier = "GhimMac"
+let SwiftLoggerIdentifier = "SwiftLogger"
 /**
 * Helper methods that make logging more consistent throughout the app.  These methods also allow for indentation making
 * the logs easier to read when processing a lot of data.  The log calls in ecgmagic are not really intended for external
-* use.  These will simply be silent in the absence of an available logging system like CocoaLumberjack or GhimMac
+* use.  These will simply be silent in the absence of an available logging system like CocoaLumberjack or SwiftLogger
 *
 * 2023-08-12: Remove Swift OS Logger.  Use Stdout directly so as to have better control when not running inside XCode.
 */
 
-class GhostLogger
+class SwiftLogger
 {
 	private let dateFormatter = DateFormatter()
 	let timeFormats = Formatters()
 
 	//Bundle.main.url is for Apps
 	//Bundle.module is for Swift Packages
-	private let package = Bundle.main.bundleIdentifier ?? Bundle.module.bundleIdentifier ?? "net.raptor.GhimMac"
+	private let package = Bundle.main.bundleIdentifier ?? Bundle.module.bundleIdentifier ?? "net.raptor.SwiftLogger"
 	private var userDefaults: UserDefaults
 	
 	//This was added after os.Logger so it stays
@@ -44,24 +44,24 @@ class GhostLogger
 
 	public init(subsystem: String? = nil, category: String? = nil)
 	{
-		let suiteName = package + ".GhimMac"
+		let suiteName = package + ".SwiftLogger"
 		self.userDefaults = UserDefaults(suiteName: suiteName) ?? UserDefaults.standard
-		let category = category ?? suiteName.components(separatedBy: ".").last ?? "GhimMac"
+		let category = category ?? suiteName.components(separatedBy: ".").last ?? "SwiftLogger"
 		let subsystem = subsystem ?? package
 		self.logger = Logger(subsystem: subsystem, category: category)
 
-		if let logConfig = userDefaults.object(forKey: ghimMacIdentifier) as? Data
+		if let logConfig = userDefaults.object(forKey: SwiftLoggerIdentifier) as? Data
 		{
 			configure(logConfig: logConfig)
 		}
-		else if let configURL = Bundle.main.url(forResource: ghimMacIdentifier, withExtension: "config")
-								?? Bundle.module.url(forResource: ghimMacIdentifier, withExtension: "config")
+		else if let configURL = Bundle.main.url(forResource: SwiftLoggerIdentifier, withExtension: "config")
+								?? Bundle.module.url(forResource: SwiftLoggerIdentifier, withExtension: "config")
 		{
 			do {
 				let data = try Data(contentsOf: configURL, options: .mappedIfSafe)
 				configure(logConfig: data)
 			} catch {
-				print("Unable to intialize GhimMac: \(error)")
+				print("Unable to intialize SwiftLogger: \(error)")
 			}
 		}
 	}
@@ -80,13 +80,13 @@ class GhostLogger
 		}
 		catch
 		{
-			print("Unable to intialize GhimMac: \(error)")
+			print("Unable to intialize SwiftLogger: \(error)")
 		}
 	}
 
 	func reloadFromUserDefaults() throws
 	{
-		if let logConfig = userDefaults.object(forKey: ghimMacIdentifier) as? Data
+		if let logConfig = userDefaults.object(forKey: SwiftLoggerIdentifier) as? Data
 		{
 			let logDefaults: LogConfig = try JSONDecoder().decode(LogConfig.self, from: logConfig)
 			threshold = Threshold(levels: logDefaults.levels)
