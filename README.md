@@ -1,6 +1,6 @@
 # SwiftLogger
 
-SwiftLogger is loosely based on the original Log4J and it's successor Logback.  Despite Log4J presenting an excellent logging framework before Java had it's own, the makers of Java felt, for some reason, that a lobotimized logging framework was what they wanted instead.  Naturally Android and Swift have followed suit with much less powerful logging frameworks which encourage developers to simply avoid logging as much as possible.
+SwiftLogger is loosely based on the original Log4J and it's successor Logback.  Despite Log4J presenting an excellent logging framework before Java had it's own, Java, Swift and Android have all implemented less powerful frameworks.
 
 In contrast Log4J and SwiftLogger are configurable and can be set to log as much or as little as needed before or, perhaps, during logging.  It can also be wholly deactivated to maximize performance on release.  
 
